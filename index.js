@@ -1,0 +1,25 @@
+'use strict';
+
+const uuidv1 = require('uuid/v1');
+const httpContext = require('express-http-context');
+const loggerBuilder = require('./lib/logger');
+let logger;
+
+
+const initializeLogger = (app, transportsConfigLogger=null) => {
+    app.use(httpContext.middleware);
+
+    // Run the context for each request. Assign a unique identifier to each request
+    app.use(function(req, res, next) {
+        httpContext.set('reqId', uuidv1());
+        next();
+    });
+
+    logger = loggerBuilder.initializeLogger(transportsConfigLogger);
+};
+
+
+module.exports = {
+    initializeLogger,
+    logger
+};

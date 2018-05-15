@@ -1,0 +1,24 @@
+{
+  "name": "express-logger-unique-req-id",
+  "version": "1.0.0",
+  "description": "Express logger with unique id per request",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "logger",
+    "winston",
+    "express",
+    "node.js",
+    "unique",
+    "id",
+    "request"
+  ],
+  "author": "David Vicente",
+  "license": "MIT",
+  "dependencies": {
+    "express-http-context": "^1.0.0",
+    "path": "^0.12.7",
+    "uuid": "^3.2.1",
+    "winston": "^2.4.2"
+  }
+}
