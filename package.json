@@ -1,6 +1,6 @@
 {
   "name": "express-logger-unique-req-id",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Express logger with unique id per request",
   "main": "index.js",
   "scripts": {},

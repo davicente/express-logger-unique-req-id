@@ -6,6 +6,11 @@ const loggerBuilder = require('./lib/logger');
 let logger;
 
 
+const getLogger = () => {
+    return logger;
+};
+
+
 const initializeLogger = (app, transportsConfigLogger=null) => {
     app.use(httpContext.middleware);
 
@@ -21,5 +26,5 @@ const initializeLogger = (app, transportsConfigLogger=null) => {
 
 module.exports = {
     initializeLogger,
-    logger
+    getLogger
 };
