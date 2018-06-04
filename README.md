@@ -13,13 +13,16 @@ npm install express-logger-unique-req-id --save
 var express= require('express');
 var app = express();
 
-var express_logger = require('./express-logger-unique-req-id');
+var express_logger = require('express-logger-unique-req-id');
 
 express_logger.initializeLogger(app);
 let logger = express_logger.getLogger();
 
 logger.debug('First message');
 ```
+
+As this library uses node asynchronous and contexts, it's important to assign it to the middleware in the right order. This means, if there are other libraries that uses this characteristics too can affect to the good performance of the library. 
+If body-parser library is used, express-logger-unique-req-id library has to be assign to the middleware after body-parser. Other case, the library could have unexpected behaviour. In the rest of cases the general rule is to assign it to the middleware as soon as possible.
 
 
 ## Configure logger
