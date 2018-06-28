@@ -11,7 +11,7 @@ const getLogger = () => {
 };
 
 
-const initializeLogger = (app, transportsConfigLogger=null) => {
+const initializeLogger = (app, fileConf = null, consoleConf = null) => {
     app.use(httpContext.middleware);
 
     // Run the context for each request. Assign a unique identifier to each request
@@ -20,7 +20,7 @@ const initializeLogger = (app, transportsConfigLogger=null) => {
         next();
     });
 
-    logger = loggerBuilder.initializeLogger(transportsConfigLogger);
+    logger = loggerBuilder.initializeLogger(fileConf, consoleConf);
 };
 
 

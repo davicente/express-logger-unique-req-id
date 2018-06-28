@@ -27,7 +27,7 @@ If body-parser library is used, express-logger-unique-req-id library has to be a
 
 ## Configure logger
 
-As this library uses [`Winston`](https://github.com/winstonjs/winston) as logger, you can configure it with an array similar to the ones use with Winston:
+As this library uses [`Winston`](https://github.com/winstonjs/winston) as logger, you can configure the File and the Console transports with the same information as you would use with winston
 
 ``` js
 var express= require('express');
@@ -36,9 +36,7 @@ var app = express();
 var express_logger = require('./express-logger-unique-req-id');
 
 //logger configuration
-const winston = require('winston');
-let transports = [
-    new winston.transports.File({
+const fileConf = {
     level: 'debug',
     filename: './logs.log',
     handleExceptions: true,
@@ -47,17 +45,17 @@ let transports = [
     maxFiles: 5,
     colorize: false,
     timestamp: true
-    }),
-    new winston.transports.Console({
+};
+
+const consoleConf = {
     level: 'debug',
     handleExceptions: true,
     json: false,
     colorize: true,
     timestamp: true
-    })
-];
+};
 
-express_logger.initializeLogger(app, transports);
+express_logger.initializeLogger(app, fileConf, consoleConf);
 let logger = express_logger.getLogger();
 
 logger.debug('First message');
